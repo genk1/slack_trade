@@ -6,31 +6,31 @@
  - アービトラージによる値格差取引
 
 それでは今回行ったことですが、
-「**Slackを利用して簡単に購入、値段確認ができるようにしました**」
+「Slackを利用して簡単に購入、値段確認ができるようにしました」
 
-###**必要なもの**
+### 必要なもの
 1. python3系
 2. pip install slackbot - [参考リンク>> https://github.com/lins05/slackbot](https://github.com/lins05/slackbot)
 3. 購入まで行いたい人は API KEY 発行 [参考リンク>> https://zaif.jp/api_keys](https://zaif.jp/api_keys)
 4. SlackAPIと利用するためのチーム (webのSlackに入ったら https://チーム名.slack.com/appsへログインしてbotを検索して利用する -> 詳細は現在省く)
 
-###**前提条件**
+### 前提条件
 slackでボットに対して
 price xem
 price btc
 price all
 などと送ると現在の価格表が返ってくるようにする
 
-###**達成後のイメージ**
+### 達成後のイメージ
 <img width="520" alt="Screen Shot 2017-11-26 at 12.36.49 AM.png" src="https://qiita-image-store.s3.amazonaws.com/0/94541/0585c67f-d471-998d-c6f2-c62f56fae731.png">
 
 
-###**作業手順**
+### 作業手順
 1. 適当なプロジェクトフォルダの作成
 2. 価格表を取れるようにする (今回はここまで)
 3. 購入を出来るようにする
 
-##1 . 適当なプロジェクトフォルダの作成
+## 1 . 適当なプロジェクトフォルダの作成
 
 ここで行っていくのはslackbot libを利用するにあたり必要なプロジェクト構成を説明します。
 -- プロジェクトフォルダ
@@ -41,7 +41,7 @@ price all
 -- -- -- trade_bot.py(取引を実際にするサービス)
 
 ```python:run.py
-#run.py
+# run.py
 
 from slackbot.bot import Bot
 def main():
@@ -143,8 +143,8 @@ def get_last_price_func(coin_type):
 #data = get_last_price_func(main_coin + "_jpy").json()
 data = get_price_func(main_coin + "_jpy", 'last_price/').json()
 *
-**
-****
+
+
 #data = get_trade_detail_func(coin_name + "_jpy").json()
 data = get_price_func(coin_name + "_jpy", 'ticker/').json()
 
@@ -161,7 +161,7 @@ def get_price_func(currency_pair, action):
 こっちのほうがスッキリしましたね！
 というかこれであれば基本的に現金取引のAPIを叩きたいときは直ぐに呼び出せるようになりましたね！
 
-###以上で終了！
+### 以上で終了！
 
 ##ボリュームがでかくなってきたので今日はこれまでです！
 次回は実際に取引をどのように行うかを書いていきたいと思います。
@@ -170,9 +170,9 @@ Zaifに興味がある方はこちらからどうぞ！(アフィですが！)
 [Zaifへのリンク](https://zaif.jp?ac=6d3fmuu1ar)
             
 
-###今後の予定
-0. **-今回-** Slackを利用して簡単に価格表を取得できるようにする
-1. **(次回)** Slackを利用して簡単に購入ができるようにする
+### 今後の予定
+0. -今回- Slackを利用して簡単に価格表を取得できるようにする
+1. (次回) Slackを利用して簡単に購入ができるようにする
 2. python 非公式APIに切り替える
 3. AWSに設置していつでも使えるようにする(苦手)
 4. websocketによるstreamによるデータ取得を行う
